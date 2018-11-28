@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FieldContainer from "../commons/FieldContainer";
 
 class Input extends Component {
   static defaultProps = {
@@ -22,23 +23,19 @@ class Input extends Component {
   };
 
   render() {
-    const { classes, id, label, type } = this.props;
+    const { classes, type } = this.props;
 
     const { value } = this.state;
 
     return (
-      <div
-        className={`dynamic-input-container form-group ${classes.container}`}
-      >
-        <label htmlFor={id}>{label}</label>
+      <FieldContainer {...this.props}>
         <input
           type={type || "text"}
           className={`dynamic-input-content form-control ${classes.content}`}
           onChange={this.onChange}
           value={value}
         />
-        <span>err string</span>
-      </div>
+      </FieldContainer>
     );
   }
 }
